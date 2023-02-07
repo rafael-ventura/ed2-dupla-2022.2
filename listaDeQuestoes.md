@@ -1,4 +1,4 @@
-____________AVL_____________
+_____________AVL_____________
 
 O que é uma árvore AVL?
 Resposta: Uma árvore AVL é uma estrutura de dados de árvore de busca binária balanceada, desenvolvida por Adelson-Velsky e Landis.
