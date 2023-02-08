@@ -159,4 +159,48 @@ class AVL:
         return self.altura(no.esquerda) - self.altura(no.direita)
 
     def inserir(self, raiz, chave):
-```
+```     # Método para inserir uma nova chave na árvore AVL
+        # Verifica se a raiz é None
+        if not raiz:
+            return NoAVL(chave)
+
+        # Verifica se a chave é menor ou igual à chave da raiz
+        if chave <= raiz.chave:
+            raiz.esquerda = self.inserir(raiz.esquerda, chave)
+        else:
+            raiz.direita = self.inserir(raiz.direita, chave)
+
+        # Atualiza a altura da raiz
+        raiz.altura = self.maxAltura(self.altura(raiz.esquerda),
+                                     self.altura(raiz.direita)) + 1
+
+        # Verifica se a árvore está desequilibrada
+        fatorBalanceamento = self.fatorBalanceamento(raiz)
+
+        # Caso 1: Rotação à esquerda
+        if fatorBalanceamento > 1 and chave < raiz.esquerda.chave:
+            return self.rotacaoDireita(raiz)
+
+        # Caso 2: Rotação à direita
+        if fatorBalanceamento < -1 and chave > raiz.direita.chave:
+            return self.rotacaoEsquerda(raiz)
+
+        # Caso 3: Rotação dupla à esquerda
+        if fatorBalanceamento > 1 and chave > raiz.esquerda.chave:
+            raiz.esquerda = self.rotacaoEsquerda(raiz.esquerda)
+            return self.rotacaoDireita(raiz)
+
+        # Caso 4: Rotação dupla à direita
+        if fatorBalanceamento < -1 and chave < raiz.direita.chave:
+            raiz.direita = self.rotacaoDireita(raiz.direita)
+            return self.rotacaoEsquerda(raiz)
+
+        # Retorna a raiz atualizada
+        return raiz
+
+    def preOrdem(self, raiz):
+        # Método de percurso em pré-ordem da árvore AVL
+        if raiz is not None:
+            print(raiz.chave, end=' ')
+            self.preOrdem(raiz.esquerda)
+            self.preOrdem(raiz.direita)
