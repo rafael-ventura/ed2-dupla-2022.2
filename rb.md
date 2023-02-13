@@ -1,6 +1,16 @@
 
 <h2>Árvore Rubro-Negra</h2>
 
+
+__Seja x um nó de uma BST rubro-negra. Mostre que todos os caminho que levam de x até um link null têm o mesmo número de links pretos.__
+É verdade pois em uma árvore rubro-negra todos os caminhos têm o mesmo número de links negros, independentemente do nó de partida. Em uma árvore rubro-negra, todos os caminhos a partir de um determinado nó até as folhas devem ter o mesmo número de links negros. 
+
+__Suponha que x é um nó de uma BST rubro-negra. Suponha que x.right == null mas x.left != null. Prove que x.left.color == RED e x.left não tem filhos (ou seja, x.left.left == null e x.left.right == null).__
+Em uma árvore rubro-negra, se um nó tem um filho direito nulo (x.right == null) e um filho esquerdo não nulo (x.left != null), então o filho esquerdo é obrigatoriamente vermelho e não tem filhos. Isso é uma das propriedades da árvore rubro-negra que ajuda a manter a altura da árvore otimizada.
+
+__Qual o número mínimo e o número máximo de links rubros numa BST rubro negra com N nós?  Qual o número máximo?__
+O número mínimo de links vermelhos em uma árvore rubro-negra com N nós é 0, pois todos os nós podem ser negros. O número máximo de links vermelhos é N-1, pois apenas a raiz pode ser negra e todos os outros nós podem ser vermelhos. O número máximo de links vermelhos em uma árvore rubro-negra é log2(N+1) porque a altura da árvore é otimizada para logarítmica, o que limita o número máximo de links vermelhos.
+
 __Qual é a principal característica de uma árvore rubro-negra?__
 _R: A principal característica de uma árvore rubro-negra é a cor dos seus nós. Os nós da árvore podem ser vermelhos ou pretos, e essas cores são usadas para manter o equilíbrio da árvore e garantir uma complexidade de tempo constante para operações de busca, inserção e remoção._
 
